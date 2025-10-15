@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ko"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>운세&타로</title>
+<link rel="stylesheet" href="styles.css"/>    <link rel="icon" type="image/x-icon" href="icons/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="icons/favicon.ico">
+</head>
+<body id="body">
+<div class="container">
+<header class="header">
+  <button class="btn" id="title-home" style="font-weight:800;font-size:18px;padding:12px 16px">운세&타로</button>
+  <div class="controls"><button class="btn" id="toggle-theme">라이트/다크</button></div>
+</header>
+
+<section id="home">
+  <div class="panel">
+    <div class="badge">오늘: <span id="today"></span></div>
+    <h2 class="section-title">무엇을 볼까요?</h2>
+    <div class="grid">
+      <div class="card"><div class="thumb">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.39 4.84L20 7.27l-4 3.9L17 18l-5-2.6L7 18l1-6.83-4-3.9 5.61-.43L12 2z" stroke="currentColor"/></svg></div>
+        <div class="content"><h3>오늘의 운세</h3><p>생년월일 기반 일일 리포트</p><div class="cta"><button class="btn" data-route="daily">보러 가기</button></div></div>
+      </div>
+      <div class="card"><div class="thumb">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1.5" stroke="currentColor"/><rect x="14" y="3" width="7" height="7" rx="1.5" stroke="currentColor"/><rect x="3" y="14" width="7" height="7" rx="1.5" stroke="currentColor"/><rect x="14" y="14" width="7" height="7" rx="1.5" stroke="currentColor"/></svg></div>
+        <div class="content"><h3>종합 운세</h3><p>연애·금전·커리어·건강·행운</p><div class="cta"><button class="btn" data-route="full">보러 가기</button></div></div>
+      </div>
+      <div class="card"><div class="thumb">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none"><rect x="5" y="4" width="10" height="16" rx="2" stroke="currentColor"/><rect x="9" y="6" width="10" height="16" rx="2" stroke="currentColor" opacity=".8"/></svg></div>
+        <div class="content"><h3>타로 리딩</h3><p>3장 스프레드</p><div class="cta"><button class="btn" data-route="tarot">보러 가기</button></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="daily" class="hidden">
+  <div class="panel">
+    <h2 class="section-title">오늘의 운세 입력</h2>
+    <div class="form">
+      <div class="field"><label>이름 *</label><input id="d_name" placeholder="홍길동"/></div>
+      <div class="field"><label>생년월일 *</label><input id="d_birth" type="date" title="클릭하여 날짜 선택"/></div>
+      <div class="field"><label>출생 시각 (선택)</label><input id="d_time" type="time" title="클릭하여 시간 선택"/></div>
+      <div class="field"><label>성별 (선택)</label>
+        <select id="d_gender"><option value="">선택 안함</option><option>남성</option><option>여성</option><option>기타</option></select>
+      </div>
+      <div class="field full"><label>관심사 (선택)</label><input id="d_focus" placeholder="연애, 취업, 건강 등"/></div>
+    </div>
+    <div class="row" style="margin-top:12px"><button class="btn" id="d_run">운세 보기</button><button class="btn" data-route="home">뒤로</button></div>
+  </div>
+  <div id="d_out" class="panel hidden"></div>
+</section>
+
+<section id="full" class="hidden">
+  <div class="panel">
+    <h2 class="section-title">종합 운세 입력</h2>
+    <div class="form">
+      <div class="field"><label>이름 *</label><input id="f_name" placeholder="홍길동"/></div>
+      <div class="field"><label>생년월일 *</label><input id="f_birth" type="date" title="클릭하여 날짜 선택"/></div>
+      <div class="field"><label>출생 시각 (선택)</label><input id="f_time" type="time" title="클릭하여 시간 선택"/></div>
+      <div class="field"><label>관심 분야</label>
+        <select id="f_domain"><option>연애</option><option>금전</option><option>커리어</option><option>건강</option><option>대인</option><option>행운</option></select>
+      </div>
+      <div class="field full"><label>올해 목표/상황 (선택)</label><textarea id="f_ctx" placeholder="예: 이직 준비 중, 투자 시작..."></textarea></div>
+    </div>
+    <div class="row" style="margin-top:12px"><button class="btn" id="f_run">리포트 생성</button><button class="btn" data-route="home">뒤로</button></div>
+  </div>
+  <div id="f_out" class="panel hidden"></div>
+</section>
+
+<section id="tarot" class="hidden">
+  <div class="panel">
+    <h2 class="section-title">타로 리딩</h2>
+    <div class="form">
+      <div class="field"><label>이름 *</label><input id="t_name" placeholder="홍길동"/></div>
+      <div class="field"><label>생년월일 *</label><input id="t_birth" type="date" title="클릭하여 날짜 선택"/></div>
+      <div class="field full"><label>질문 *</label><input id="t_q" placeholder="예: 이번 면접 결과가 좋을까요?"/></div>
+    </div>
+    <div class="row" style="margin-top:12px"><button class="btn" id="t_run">3장 스프레드</button><button class="btn" data-route="home">뒤로</button></div>
+  </div>
+  <div id="t_board" class="panel hidden">
+    <h3 style="margin-top:4px">카드를 클릭해 뒤집어 보세요</h3>
+    <div class="tarot-board" id="tarotBoard"></div>
+    <div id="tarotDetail" class="tarot-detail"></div>
+  </div>
+</section>
+
+</div>
+<script src="app.js"></script>
+</body></html>
